@@ -19,6 +19,7 @@ import { Alert, useColorScheme } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import { getItemAsync, setItemAsync } from "expo-secure-store";
 import axios from "axios";
+import { getCurrentPositionAsync, reverseGeocodeAsync } from "expo-location";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -60,9 +61,18 @@ export default function App() {
   };
 
   React.useEffect(() => {
+    (async () => {
+      const location = (await getCurrentPositionAsync({})).coords;
+      console.log(location);
+      const address = await reverseGeocodeAsync(location);
+      console.log(address);
+      
+      
+    })();
     checkAuth();
   }, []);
-
+  console.log(process.env.EXPO_PUBLIC_BASE_URL);
+  
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />

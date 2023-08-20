@@ -29,6 +29,14 @@
     "androidStatusBar": {
       "backgroundColor": "#234567",
       "translucent": false
-    }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ]
   }
 }
